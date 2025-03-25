@@ -1,0 +1,91 @@
+body {
+  background: #94edbb;
+  font-family: "Edu AU VIC WA NT Pre", serif;
+}
+a {
+  color: #ed4cd0;
+}
+
+.meteo-app {
+  background: rgb(153, 183, 235);
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 30px 50px rgba(65, 50, 100, 0.08);
+}
+
+header {
+  border-bottom: 1px solid #f9f7fe;
+  padding-bottom: 30px;
+}
+
+.search {
+  background-color: #f9f7fe;
+  border: none;
+  color: rgba(39, 33, 66, 0.4);
+  font-size: 16px;
+  padding: 20px;
+  width: 75%;
+  border-radius: 6px;
+}
+.search-button {
+  margin-left: 5px;
+  font-size: 16px;
+  background-color: #885df1;
+  color: white;
+  border: none;
+  padding: 20px;
+  line-height: 1;
+  border-radius: 5px;
+}
+
+main {
+  padding: 30px 0;
+}
+.current-weather {
+  display: flex;
+  justify-content: space-between;
+}
+.current-city {
+  font-size: 38px;
+  font-weight: 900;
+  margin: 0;
+}
+.current-temp {
+  font-size: 48px;
+}
+.current-info {
+  color: rgba(39, 33, 66, 0.4);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.current-info strong {
+  color: #f65282;
+}
+.current-temp-logo {
+  position: relative;
+  top: -8px;
+  font-size: 40px;
+  margin-right: 10px;
+}
+
+.current-temp-value {
+  font-size: 80px;
+  font-weight: bold;
+}
+
+.current-temp-unit {
+  font-size: 28px;
+  position: relative;
+  top: -38px;
+}
+footer {
+  border-top: 1px solid #f9f7fe;
+  text-align: center;
+  padding-top: 15px;
+  font-weight: 500;
+  color: rgba(7, 4, 20, 0.4);
+}
