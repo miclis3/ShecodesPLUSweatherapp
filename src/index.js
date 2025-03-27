@@ -13,7 +13,12 @@ function displayTemperature(response) {
   let timeElement = document.querySelector("#current-date");
   let date = new Date(response.data.time * 1000);
   timeElement.innerHTML = formatDate(date);
-  
+  let iconElement = document.querySelector("#icon");
+  iconElement.innerHTML = `<img
+              class="current-temp-logo"
+              src="${response.data.condition.icon_url}"
+            />`;
+  console.log(response.data.condition);
 }
 
 function formatDate(date) {
