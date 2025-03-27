@@ -6,17 +6,22 @@ function displayTemperature(response) {
   currentTemp.innerHTML = temp;
 }
 
+function searchCity(city) {
+  let apiKey = "262045a1ecc3deb5t39bodeb754cb40f";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
 function search(event) {
   event.preventDefault();
   let searchInputElement = document.querySelector("#search-input");
-
-  let apiKey = "262045a1ecc3deb5t39bodeb754cb40f";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${searchInputElement.value}&key=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayTemperature);
+  searchCity(searchInputElement.value);
 }
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
+
+searchCity("Lisbon");
 
 function formatDate(date) {
   let minutes = date.getMinutes();
