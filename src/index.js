@@ -2,23 +2,24 @@ function displayTemperature(response) {
   let temp = Math.round(response.data.temperature.current);
   let currentTemp = document.querySelector("#current-temp-value");
   let cityElement = document.querySelector("#current-city");
-  cityElement.innerHTML = response.data.city;
-  currentTemp.innerHTML = temp;
   let descriptionElement = document.querySelector("#description");
-  descriptionElement.innerHTML = response.data.condition.description;
   let humidityElement = document.querySelector("#humidity");
-  humidityElement.innerHTML = `${response.data.temperature.humidity} %`;
   let windElement = document.querySelector("#wind");
-  windElement.innerHTML = `${response.data.wind.speed} km/h`;
   let timeElement = document.querySelector("#current-date");
   let date = new Date(response.data.time * 1000);
-  timeElement.innerHTML = formatDate(date);
   let iconElement = document.querySelector("#icon");
+
+  cityElement.innerHTML = response.data.city;
+  currentTemp.innerHTML = temp;
+  descriptionElement.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = `${response.data.temperature.humidity} %`;
+  windElement.innerHTML = `${response.data.wind.speed} km/h`;
+  timeElement.innerHTML = formatDate(date);
   iconElement.innerHTML = `<img
               class="current-temp-logo"
               src="${response.data.condition.icon_url}"
             />`;
-  console.log(response.data.condition);
+  getForecast(response.data.city);
 }
 
 function formatDate(date) {
@@ -53,7 +54,15 @@ function search(event) {
   searchCity(searchInputElement.value);
 }
 
-function displayForecast() {
+function getForecast(city) {
+  let apiKey = "262045a1ecc3deb5t39bodeb754cb40f";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
+  console.log(response.data);
+
   let forecastElement = document.querySelector("#forecast");
 
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -84,4 +93,3 @@ let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
 
 searchCity("Lisbon");
-displayForecast();
